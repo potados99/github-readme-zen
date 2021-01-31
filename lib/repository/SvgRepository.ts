@@ -8,18 +8,25 @@ class SvgRepository {
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
 
-            <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color: rgb(89,188,227); stop-opacity: 1" />
-                    <stop offset="100%" style="stop-color: rgb(72,52,198); stop-opacity: 1" />
-                </linearGradient>
-            </defs>
+        <linearGradient id="linear-gradient" x1="-100%" y1="100%" x2="800%" y2="0" >
+            <stop offset="0" stop-color="#007FFF">
+               <animate attributeName="offset" values="0;0.8" dur="4s" repeatCount="indefinite"  /> 
+            </stop>
+            <stop offset="0" stop-color="rgba(0, 127, 255, 0.3)">
+               <animate attributeName="offset" values="0;0.8" dur="4s" repeatCount="indefinite"  /> 
+            </stop>
+            <stop offset="0.1" stop-color="rgba(0, 127, 255, 0.3)">
+                <animate attributeName="offset" values="0.1;1" dur="4s" repeatCount="indefinite"  /> 
+            </stop>
+            <stop offset="0.1" stop-color="#007FFF">
+                <animate attributeName="offset" values="0.1;1" dur="4s" repeatCount="indefinite"  /> 
+            </stop>
+        </linearGradient>
         
             <style>
                 .header {
                     font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
-                    fill: url(#grad1);
-                    animation: fadeInAnimation 0.8s ease-in-out forwards;
+                    fill: url(#linear-gradient);
                 }
 
                 @keyframes fadeInAnimation {
@@ -30,6 +37,7 @@ class SvgRepository {
                         opacity: 1;
                     }
                 }
+                
             </style>
 
             <g transform="translate(0, 25)">
