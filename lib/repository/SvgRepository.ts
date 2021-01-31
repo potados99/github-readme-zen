@@ -25,7 +25,7 @@ class SvgRepository {
                 }
             </style>
 
-            <g transform="translate(5, 25)">
+            <g transform="translate(0, 25)">
                 <text class="header" data-testid="header">${text}</text>
             </g>
         </svg>
