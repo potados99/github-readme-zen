@@ -8,7 +8,7 @@ class SvgRepository {
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
 
-        <linearGradient id="linear-gradient" x1="-100%" y1="100%" x2="800%" y2="0" >
+        <linearGradient id="linear-gradient" x1="-100%" y1="100%" x2="800%" y2="90%" >
             <stop offset="0" stop-color="#007FFF">
                <animate attributeName="offset" values="0;0.8" dur="4s" repeatCount="indefinite"  /> 
             </stop>
