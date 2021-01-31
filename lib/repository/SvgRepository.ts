@@ -2,9 +2,9 @@ class SvgRepository {
     createSvgFromText(text: string) {
         return `
         <svg
-            width="512"
+            width="495"
             height="40"
-            viewBox="0 0 512 40"
+            viewBox="0 0 495 40"
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
 
