@@ -1,7 +1,7 @@
 export default {
     zen: {
         sourceUrl: 'https://api.github.com/zen',
-        fetchInterval: 10 * 1000
+        fetchInterval: 1 /* immediate */
     },
 
     server: {
