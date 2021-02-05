@@ -12,7 +12,10 @@ export default function startServer() {
 
         console.log(`Visit from ${req.ip}`);
 
-        res.contentType("image/svg+xml").send(svg);
+        res
+            .contentType("image/svg+xml")
+            .set("Cache-Control", "public, max-age=0, must-revalidate")
+            .send(svg);
     });
 
     app.listen(config.server.port);
