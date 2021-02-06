@@ -1,13 +1,18 @@
 import express from 'express';
-import zenRepository from "../repository/ZenRepository";
-import svgRepository from "../repository/SvgRepository";
 import config from "../../config";
+import ZenRepository from "../repository/ZenRepository";
+import SvgRepository from "../repository/SvgRepository";
 
 export default function startServer() {
     const app = express();
 
+    const zenRepository = new ZenRepository(config.zen.source.redisUrl);
+    const svgRepository = new SvgRepository();
+
     app.get("/", async (req, res) => {
-        const zen = await zenRepository.getLatestZen();
+        const {lang} = req.query;
+
+        const zen = await zenRepository.getZen(lang as string);
         const svg = await svgRepository.createSvgFromText(zen);
 
         console.log(`Visit from ${req.ip}`);

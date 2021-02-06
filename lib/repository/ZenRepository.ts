@@ -1,66 +1,37 @@
-import config from "../../config";
-
-import fetch from "node-fetch";
+import redis, {RedisClient} from "redis"
+import {promisify} from "util"
 
 class ZenRepository {
-    private lastFetch: number = 0;
-    private latestZen: string = "";
+    private readonly redisClient: RedisClient;
 
-    async getLatestZen() {
-        await this.fetchIfNeeded();
+    constructor(redisUrl: string) {
+        this.redisClient = redis.createClient({
+            url: redisUrl
+        });
 
-        return this.latestZen;
+        this.redisClient.on("error", (error) => {
+            console.error(`Error from redis! ${error}`);
+        });
     }
 
-    private async fetchIfNeeded() {
-        const timeToFetch = (Date.now() - this.lastFetch) > config.zen.fetchInterval;
-        if (!timeToFetch) {
-            console.log("Reuse zen!");
-            return;
+    async getZen(language?: string) {
+        const allZens = await this.getAllZensFromRedis(language);
+        if (allZens.length === 0) {
+            return `No zens found for language '${language}' :(`;
         }
 
-        console.log("Fetch zen!");
-
-        this.latestZen = await this.fetchZen();
-        this.lastFetch = Date.now();
+        return ZenRepository.randomPick(allZens);
     }
 
-    private async fetchZen() {
-        const result = await fetch(config.zen.sourceUrl);
-        const content = await result.text();
-        const isAnError = content.startsWith("{");
+    private async getAllZensFromRedis(language?: string) {
+        const getAsync = promisify(this.redisClient.smembers).bind(this.redisClient);
 
-        if (isAnError) {
-            console.log(`Error! ${content}`);
-            return this.getFromFallbackZen();
-        } else {
-            return content;
-        }
+        return getAsync(language || "kor");
     }
 
-    private getFromFallbackZen() {
-        const allZens = [
-            "It's not fully shipped until it's fast.",
-            "Practicality beats purity.",
-            "Avoid administrative distraction.",
-            "Mind your words, they are important.",
-            "Non-blocking is better than blocking.",
-            "Design for failure.",
-            "Half measures are as bad as nothing at all.",
-            "Favor focus over features.",
-            "Approachable is better than simple.",
-            "Encourage flow.",
-            "Anything added dilutes everything else.",
-            "Speak like a human.",
-            "Responsive is better than fast.",
-            "Keep it logically awesome."
-        ];
-
-        // Random pick
-        return allZens[Math.floor(Math.random() * allZens.length)];
+    private static randomPick(collection: string[]) {
+        return collection[Math.floor(Math.random() * collection.length)];
     }
 }
 
-const zenRepository = new ZenRepository();
-
-export default zenRepository;
+export default ZenRepository;

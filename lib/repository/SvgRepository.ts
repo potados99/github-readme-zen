@@ -3,16 +3,16 @@ class SvgRepository {
         return `
         <svg
             width="495"
-            height="40"
-            viewBox="0 0 495 40"
+            height="44"
+            viewBox="0 0 495 44"
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
 
             <style>
                 .header {
                     font: 600 18px Sans-Serif;
-                    fill: #0366d6;
                     animation: fadeInAnimation 0.8s ease-in-out forwards;
+                    word-break: keep-all;
                 }
 
                 @keyframes fadeInAnimation {
@@ -26,14 +26,15 @@ class SvgRepository {
                 
             </style>
 
-            <g transform="translate(0, 25)">
-                <text class="header" data-testid="header">${text}</text>
-            </g>
+            <switch>
+                <foreignObject width="495" height="44">
+                    <p class="header" xmlns="http://www.w3.org/1999/xhtml">"${text}"</p>
+                </foreignObject>
+            </switch>
+
         </svg>
         `
     }
 }
 
-const svgRepository = new SvgRepository();
-
-export default svgRepository;
+export default SvgRepository;
