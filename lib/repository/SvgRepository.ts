@@ -11,6 +11,7 @@ class SvgRepository {
             <style>
                 .header {
                     font: 600 18px Sans-Serif;
+                    color: #24292e
                     animation: fadeInAnimation 0.8s ease-in-out forwards;
                     word-break: keep-all;
                 }
