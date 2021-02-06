@@ -11,7 +11,8 @@ class SvgRepository {
             <style>
                 .header {
                     font: 600 18px Sans-Serif;
-                    color: #24292e
+                    color: #24292e;
+                    height: 100%;
                     animation: fadeInAnimation 0.8s ease-in-out forwards;
                     word-break: keep-all;
                 }
@@ -28,8 +29,18 @@ class SvgRepository {
             </style>
 
             <switch>
-                <foreignObject width="495" height="44">
-                    <p class="header" xmlns="http://www.w3.org/1999/xhtml">"${text}"</p>
+                <g requiredFeatures="http://www.w3.org/Graphics/SVG/feature/1.2/#TextFlow">
+                    <textArea class="header" width="495" height="auto">
+                        “${text}”
+                    </textArea>
+                </g>
+                
+                <foreignObject width="495" height="44" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div class="header" style="display: table;" xmlns="http://www.w3.org/1999/xhtml">
+                        <span style="display: table-cell; vertical-align: middle;">
+                            “${text}”
+                        </span>
+                    </div>
                 </foreignObject>
             </switch>
 
