@@ -3,14 +3,14 @@ class SvgRepository {
         return `
         <svg
             width="330"
-            height="44"
-            viewBox="0 0 330 44"
+            height="57"
+            viewBox="0 0 330 57"
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
 
             <style>
                 .header {
-                    font: 600 18px Sans-Serif;
+                    font: 600 16px Sans-Serif;
                     color: #24292e;
                     height: 100%;
                     animation: fadeInAnimation 0.8s ease-in-out forwards;
@@ -35,7 +35,7 @@ class SvgRepository {
                     </textArea>
                 </g>
                 
-                <foreignObject width="330" height="44" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                <foreignObject width="330" height="57" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div class="header" style="display: table;" xmlns="http://www.w3.org/1999/xhtml">
                         <span style="display: table-cell; vertical-align: middle;">
                             “${text}”
