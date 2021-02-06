@@ -12,7 +12,6 @@ class SvgRepository {
                 .header {
                     font: 600 16px Sans-Serif;
                     color: #24292e;
-                    height: 100%;
                     animation: fadeInAnimation 0.8s ease-in-out forwards;
                     word-break: keep-all;
                 }
@@ -30,7 +29,7 @@ class SvgRepository {
 
             <switch>
                 <g requiredFeatures="http://www.w3.org/Graphics/SVG/feature/1.2/#TextFlow">
-                    <textArea class="header" width="330" height="auto">
+                    <textArea class="header" width="330" height="57">
                         “${text}”
                     </textArea>
                 </g>
