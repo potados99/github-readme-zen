@@ -2,9 +2,9 @@ class SvgRepository {
     createSvgFromText(text: string) {
         return `
         <svg
-            width="495"
+            width="330"
             height="44"
-            viewBox="0 0 495 44"
+            viewBox="0 0 330 44"
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
 
@@ -30,12 +30,12 @@ class SvgRepository {
 
             <switch>
                 <g requiredFeatures="http://www.w3.org/Graphics/SVG/feature/1.2/#TextFlow">
-                    <textArea class="header" width="495" height="auto">
+                    <textArea class="header" width="330" height="auto">
                         “${text}”
                     </textArea>
                 </g>
                 
-                <foreignObject width="495" height="44" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                <foreignObject width="330" height="44" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                     <div class="header" style="display: table;" xmlns="http://www.w3.org/1999/xhtml">
                         <span style="display: table-cell; vertical-align: middle;">
                             “${text}”
